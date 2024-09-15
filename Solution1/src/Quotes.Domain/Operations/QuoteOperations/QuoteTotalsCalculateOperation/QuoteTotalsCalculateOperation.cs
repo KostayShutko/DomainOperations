@@ -6,8 +6,6 @@ public class QuoteTotalsCalculateOperation : IQuoteTotalsCalculateOperation
 {
     public void Execute(Quote quote)
     {
-        quote.Status = QuoteStatus.Expired;
-
         quote.TotalCost = quote.QuoteItems.Sum(item => item.TotalCost);
 
         var discountAmount = quote.TotalCost * quote.Discount;

@@ -14,10 +14,10 @@ public class CompanyMustExistRule : BaseBusinessRule, ICompanyMustExistRule
     public async Task Check(int id)
     {
         var result = await check.Execute(id);
-        var isValid = result.IsSuccessful;
+        IsValid = result.IsSuccessful;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => $"Company must exist";
+    protected override string Message => $"Company must exist";
 }

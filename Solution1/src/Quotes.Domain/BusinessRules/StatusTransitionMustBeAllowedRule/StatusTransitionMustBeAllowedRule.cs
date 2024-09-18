@@ -17,10 +17,10 @@ public class StatusTransitionMustBeAllowedRule : BaseBusinessRule, IStatusTransi
 
     public void Check(QuoteStatus from, QuoteStatus to)
     {
-        var isValid = StatusTransitions.Any(transition => transition.IsAllowed(from, to));
+        IsValid = StatusTransitions.Any(transition => transition.IsAllowed(from, to));
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => "Status transition not allowed";
+    protected override string Message => "Status transition not allowed";
 }

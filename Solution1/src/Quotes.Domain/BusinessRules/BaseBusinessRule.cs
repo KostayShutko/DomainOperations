@@ -2,13 +2,21 @@
 
 namespace Quotes.Domain.BusinessRules;
 
-public class BaseBusinessRule
+public abstract class BaseBusinessRule
 {
-    protected void Assert(bool isValid, string message)
+    protected abstract string Message { get; }
+
+    protected bool? IsValid { get; set; }
+
+    protected void Assert()
     {
-        if (!isValid)
+        if (!IsValid.HasValue)
         {
-            throw new BusinessRuleValidationException(message);
+            throw new NotImplementedException();
+        }
+        if (!IsValid.Value)
+        {
+            throw new BusinessRuleValidationException(Message);
         }
     }
 }

@@ -4,10 +4,10 @@ public class CostMustBeGreaterThanZeroRule : BaseBusinessRule, ICostMustBeGreate
 {
     public void Check(decimal cost)
     {
-        var isValid = cost >= 0;
+        IsValid = cost >= 0;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => "The cost must be greater or equal to zero";
+    protected override string Message => "The cost must be greater or equal to zero";
 }

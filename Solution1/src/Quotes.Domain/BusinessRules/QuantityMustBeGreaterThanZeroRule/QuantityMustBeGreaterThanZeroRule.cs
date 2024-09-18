@@ -4,10 +4,10 @@ public class QuantityMustBeGreaterThanZeroRule : BaseBusinessRule, IQuantityMust
 {
     public void Check(int quantity)
     {
-        var isValid = quantity >= 0;
+        IsValid = quantity >= 0;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => "The quantity must be greater or equal to zero";
+    protected override string Message => "The quantity must be greater or equal to zero";
 }

@@ -4,10 +4,10 @@ public class ValueMustBeNotNullRule : BaseBusinessRule, IValueMustBeNotNullRule
 {
     public void Check(object value)
     {
-        var isValid = value is not null;
+        IsValid = value is not null;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => "The value must be set";
+    protected override string Message => "The value must be set";
 }

@@ -14,10 +14,10 @@ public class UserMustExistRule : BaseBusinessRule, IUserMustExistRule
     public async Task Check(int id)
     {
         var result = await doesUserExistCheck.Execute(id);
-        var isValid = result.IsSuccessful;
+        IsValid = result.IsSuccessful;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => $"The user must exist";
+    protected override string Message => $"The user must exist";
 }

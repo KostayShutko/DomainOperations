@@ -14,10 +14,10 @@ public class QuoteNameMustBeUniqueRule : BaseBusinessRule, IQuoteNameMustBeUniqu
     public async Task Check(string name)
     {
         var result = await isQuoteNameUniqueCheck.Execute(name);
-        var isValid = result.IsSuccessful;
+        IsValid = result.IsSuccessful;
 
-        Assert(isValid, Message);
+        Assert();
     }
 
-    public string Message => "Quote name must be unique";
+    protected override string Message => "Quote name must be unique";
 }
